@@ -2,12 +2,10 @@
 , buildPythonPackage
 , pythonOlder
 , fetchFromGitHub
-, pythonRelaxDepsHook
 , which
 # runtime dependencies
 , numpy
 , torch
-, pyre-extensions
 # check dependencies
 , pytestCheckHook
 , pytest-cov
@@ -27,7 +25,7 @@
 #, flash-attn
 }:
 let
-  version = "0.0.21";
+  version = "0.03";
 in
 buildPythonPackage {
   pname = "xformers";
@@ -39,8 +37,8 @@ buildPythonPackage {
   src = fetchFromGitHub {
     owner = "facebookresearch";
     repo = "xformers";
-    rev = "v${version}";
-    hash = "sha256-zYziynjLtqjPPHjDbruuuG9209y0Sh+wYUFHUj+QG2Y=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-G8f7tny5B8SAQ6+2uOjhY7nD0uOT4sskIwtTdwivQXo=";
     fetchSubmodules = true;
   };
 
@@ -52,18 +50,12 @@ buildPythonPackage {
   '';
 
   nativeBuildInputs = [
-    pythonRelaxDepsHook
     which
-  ];
-
-  pythonRelaxDeps = [
-    "pyre-extensions"
   ];
 
   propagatedBuildInputs = [
     numpy
     torch
-    pyre-extensions
   ];
 
   pythonImportsCheck = [ "xformers" ];

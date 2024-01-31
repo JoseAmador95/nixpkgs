@@ -5,17 +5,14 @@
   "@electron-forge/cli" = "electron-forge";
   "@microsoft/rush" = "rush";
   "@webassemblyjs/cli-1.11.1" = "wasm2wast";
-  "@withgraphite/graphite-cli" = "gt";
 
   # Packages that provide a single executable.
   "@angular/cli" = "ng";
-  "@antora/cli" = "antora";
   "@astrojs/language-server" = "astro-ls";
   "@babel/cli" = "babel";
   "@commitlint/cli" = "commitlint";
   "@gitbeaker/cli" = "gitbeaker";
   "@prisma/language-server" = "prisma-language-server";
-  "@tailwindcss/language-server" = "tailwindcss-language-server";
   "@uppy/companion" = "companion";
   "@vue/cli" = "vue";
   "@webassemblyjs/repl-1.11.1" = "wasm";
@@ -60,5 +57,4 @@
   vscode-html-languageserver-bin = "html-languageserver";
   vscode-json-languageserver-bin = "json-languageserver";
   webtorrent-cli = "webtorrent";
-  "@zwave-js/server" = "zwave-server";
 }

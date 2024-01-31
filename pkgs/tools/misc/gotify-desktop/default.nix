@@ -2,16 +2,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "gotify-desktop";
-  version = "1.3.1";
+  version = "1.3.3";
 
   src = fetchFromGitHub {
     owner = "desbma";
     repo = pname;
     rev = version;
-    sha256 = "sha256-EDLOSxmODC7OzVSZJxwKNnFA2yh+QKE8aXmYJ+Dnv40=";
+    sha256 = "sha256-vyOXZQ2X/LT/saBxcEbD96U34ufxjcWTHAobGI3bAE4=";
   };
 
-  cargoSha256 = "sha256-opSXndOjdmYG5DJ3CDUHWhN6O7AQp4Cleldzq1Hfr1o=";
+  cargoHash = "sha256-MNxHJ1iirHj78wq6ChDjr6mQS0UmHPjVMs1EPFZyTV0=";
 
   nativeBuildInputs = [ pkg-config ];
 
@@ -23,5 +23,6 @@ rustPlatform.buildRustPackage rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ bryanasdev000 genofire ];
     broken = stdenv.isDarwin;
+    mainProgram = "gotify-desktop";
   };
 }

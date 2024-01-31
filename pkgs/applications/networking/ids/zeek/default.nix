@@ -22,14 +22,15 @@
 
 let
   broker = callPackage ./broker { };
+  python = python3.withPackages (p: [ p.gitpython p.semantic-version ]);
 in
 stdenv.mkDerivation rec {
   pname = "zeek";
-  version = "6.0.1";
+  version = "6.1.1";
 
   src = fetchurl {
     url = "https://download.zeek.org/zeek-${version}.tar.gz";
-    sha256 = "sha256-z8MpoXBDkZXXBw7FOH2Vzdp+trhqyF7HB7ntDp1Xaik=";
+    sha256 = "sha256-j8Vl6Vc/Wu1JpDV0UoXkLcEPUjRUnvwVAq91RPaDN+U=";
   };
 
   strictDeps = true;
@@ -43,7 +44,7 @@ stdenv.mkDerivation rec {
     cmake
     file
     flex
-    python3
+    python
   ];
 
   buildInputs = [
@@ -56,11 +57,11 @@ stdenv.mkDerivation rec {
     openssl
     swig
     zlib
+    python
   ] ++ lib.optionals stdenv.isLinux [
     libkqueue
   ] ++ lib.optionals stdenv.isDarwin [
     gettext
-    python3
   ];
 
   postPatch = ''

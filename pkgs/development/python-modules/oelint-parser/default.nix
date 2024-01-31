@@ -3,21 +3,26 @@
 , fetchPypi
 , buildPythonPackage
 , regex
+, pip
 }:
 
 buildPythonPackage rec {
   pname = "oelint-parser";
-  version = "2.11.3";
+  version = "2.13.11";
   format = "setuptools";
 
   src = fetchPypi {
     inherit version;
     pname = "oelint_parser";
-    hash = "sha256-iR/MDHt3SEG29hSLqA36EXe8EBRZVntt+u6bwoujy0s=";
+    hash = "sha256-Hr+2S4AGx0W+rrMFdAlN7/OcDTFYivZVYknD/sHWMDs=";
   };
 
+  buildInputs = [ pip ];
   propagatedBuildInputs = [ regex ];
   pythonImportsCheck = [ "oelint_parser" ];
+
+  # Fail to run inside the code the build.
+  doCheck = false;
 
   passthru.updateScript = nix-update-script { };
 

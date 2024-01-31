@@ -11,6 +11,7 @@
 , pyopenssl
 , pytestCheckHook
 , pythonOlder
+, pythonRelaxDepsHook
 , requests
 , requests-kerberos
 , toml
@@ -18,7 +19,7 @@
 
 buildPythonPackage rec {
   pname = "aws-adfs";
-  version = "2.8.1";
+  version = "2.10.0";
   pyproject = true;
 
   disabled = pythonOlder "3.7";
@@ -27,11 +28,16 @@ buildPythonPackage rec {
     owner = "venth";
     repo = pname;
     rev = "refs/tags/v${version}";
-    hash = "sha256-tpCDP924lNSaPJggj3A94U2Ur+TgxTXtV660OyQJEeY=";
+    hash = "sha256-CUWjD5b62pSvvMS5CFZix9GL4z0EhkGttxgfeOLKHqY=";
   };
 
   nativeBuildInputs = [
     poetry-core
+    pythonRelaxDepsHook
+  ];
+
+  pythonRelaxDeps = [
+    "configparser"
   ];
 
   propagatedBuildInputs = [
